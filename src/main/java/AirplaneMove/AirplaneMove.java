@@ -120,9 +120,33 @@ class game_Frame extends JFrame implements KeyListener, Runnable{
     public void keyTyped(KeyEvent e){}
     public void KeyProcess(){
 
-        if(KeyUp == true) y -= 5;
-        if(KeyDown == true) y += 5;
-        if(KeyLeft == true) x -= 5;
-        if(KeyRight == true) x += 5;
+        if(KeyUp == true){
+            y -= 5;
+            while (y<=0){
+                y=0;
+                return;
+            }
+        }
+        if(KeyDown == true){
+            y += 5;
+            while (y+me_img.getHeight(null)>=f_height){
+                y=f_height-me_img.getHeight(null);
+                return;
+            }
+        }
+        if(KeyLeft == true){
+            x -= 5;
+            while (x<=0){
+                x=0;
+                return;
+            }
+        }
+        if(KeyRight == true){
+            x += 5;
+            while (x+me_img.getWidth(null)>=f_width){
+                x=f_width-me_img.getWidth(null);
+                return;
+            }
+        }
     }
 }
