@@ -4,8 +4,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.util.TimerTask;
 import java.util.Timer;
 
@@ -22,7 +20,6 @@ public class ShootingGame extends JFrame {
 
     private Game game = new Game();
 
-    private JButton startBtn = new JButton("START", new ImageIcon("src/main/java/JavaShootingGame/Images/abc.png"));
     public ShootingGame(){
         setTitle("자바 횡스크롤 슈팅게임");
         setSize(Main.SCREEN_WIDTH, Main.SCREEN_HEIGHT);
@@ -34,12 +31,6 @@ public class ShootingGame extends JFrame {
 
         addKeyListener(new KeyListener());
         init();
-
-        startBtn.setBounds(600,300, 200, 200);
-        startBtn.setBorderPainted(false);
-        startBtn.setContentAreaFilled(false);
-        startBtn.setFocusPainted(false);
-        add(startBtn);
     }
 
     private void init(){
@@ -144,13 +135,6 @@ public class ShootingGame extends JFrame {
                     game.setShooting(false);
                     break;
             }
-        }
-    }
-
-    class MouseListener extends MouseAdapter{
-        @Override
-        public void mouseClicked(MouseEvent e) {
-            if(e.getButton() == MouseEvent.BUTTON1);
         }
     }
 }
