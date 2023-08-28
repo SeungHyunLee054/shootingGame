@@ -12,11 +12,13 @@ public class Game extends Thread {
 
     private int score;
 
-    private Image player = new ImageIcon("src/main/java/JavaShootingGame/Images/airplane_blue.png").getImage();
+    private Image playerR = new ImageIcon("src/main/java/JavaShootingGame/Images/airplane_red.png").getImage();
+    private Image playerG = new ImageIcon("src/main/java/JavaShootingGame/Images/airplane_green.png").getImage();
+    private Image playerB = new ImageIcon("src/main/java/JavaShootingGame/Images/airplane_blue.png").getImage();
 
     private int playerX, playerY;
-    private int playerWidth = player.getWidth(null);
-    private int playerHeight = player.getHeight(null);
+    private int playerWidth = playerR.getWidth(null);
+    private int playerHeight = playerR.getHeight(null);
     private int playerSpeed = 10;
     private int playerHp = 30;
 
@@ -30,6 +32,9 @@ public class Game extends Thread {
     private PlayerAttack playerAttack;
     private Enemy enemy;
     private EnemyAttack enemyAttack;
+
+    private boolean isPlayerR, isPlayerG, isPlayerB;
+
 
     public void run(){
 
@@ -156,7 +161,15 @@ public class Game extends Thread {
     }
 
     public void playerDraw(Graphics g){
-        g.drawImage(player, playerX, playerY, playerWidth/3, playerHeight/3, null);
+        if(isPlayerR) {
+            g.drawImage(playerR, playerX, playerY, playerWidth / 3, playerHeight / 3, null);
+        }
+        if (isPlayerG){
+            g.drawImage(playerG, playerX, playerY, playerWidth / 3, playerHeight / 3, null);
+        }
+        if (isPlayerB){
+            g.drawImage(playerB, playerX, playerY, playerWidth / 3, playerHeight / 3, null);
+        }
         g.setColor(Color.RED);
         g.fillRect(playerX-1, playerY-40, playerHp *6, 20);
         for (int i = 0; i < playerAttackArrayList.size(); i++){
@@ -181,6 +194,18 @@ public class Game extends Thread {
 
     public boolean isOver() {
         return isOver;
+    }
+
+    public void setPlayerR(boolean playerR) {
+        this.isPlayerR=playerR;
+    }
+
+    public void setPlayerG(boolean playerG) {
+        this.isPlayerG=playerG;
+    }
+
+    public void setPlayerB(boolean playerB) {
+        this.isPlayerB=playerB;
     }
 
     public void setUp(boolean up) {
